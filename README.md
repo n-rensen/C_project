@@ -1,10 +1,11 @@
 # C_project
 Made for ESIEA C project
 
-/*TODO : get a working implementation of different cryptographic hash functions (md5, sha1, sha512...) if possible.
-Work on the reverse lookup function (yet producing weird behaviors).
+compilation :
 
-work on a well-rounded binary trie version of the project to compare performances.*/
+Depuis le dossier "src" : gcc -Wall -g passfinder.c -o passfinder
+
+note: le Makefile est présent dans le dossier src.
 
 Utilisation du programme :
 
@@ -55,5 +56,10 @@ Etapes réalisées dans le projet :
 5 - Axes d'améliorations :
 
     Pour le moment, seul la fonction "SHA256" est implémentée. D'autres fonctionnalités de hachages doivent être implémentés afin de permettre la recherche des "digest" de différentes fonctions de hachages et d'en trouver les correspondances. Idéalement, cette implémentation devra se faire de paire avec l'ajout de fonctionnalités permettant de passer en argument de commande le choix de la fonction de hashage (exemple : | passfinder wordlist.txt sha256 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08 | ou alors | passfinder wordlist.txt fdfedc01c66e9ea2817508ca1097df2f | qui permettrait tous deux d'obtenir "Rocket".).
-  
+
+autre : 
+/*TODO : get a working implementation of different cryptographic hash functions (md5, sha1, sha512...) if possible.
+Work on the reverse lookup function (yet producing weird behaviors).
+
+work on a well-rounded binary trie version of the project to compare performances.*/
   
