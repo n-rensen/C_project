@@ -1,0 +1,128 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+#define TABLE_SIZE 100000 // supposed limit to avoid collision
+
+int main(int argc, char**argv){
+    ht_t *ht = ht_create();
+    return 0;
+}
+
+
+// basic hash function
+unsigned int hash(const char*key ){
+    unsigned long int value = 0;
+    unsigned int i = 0;
+    unsigned int key_len = strlen(key);
+
+    // multiplucation rounds
+    //for (; i < key_len; ++i){
+    for (int i = 0; i < key_len; i++){
+        value = value *37 + key[i];
+    }
+
+    // making sure value is 0 <= value < TABLE_SIZE
+    value = value % TABLE_SIZE;
+    return value;
+}
+
+typedef struct entry_t {
+    char *key;
+    char *value;
+    struct entry_t *next;
+} entry_t;
+
+typdef struct {
+    entry_t **entries;
+}ht_t
+
+ht_t *ht_create(void){
+    // allocate the table
+    ht_t *hashtable = malloc(sizeof(ht_t) *1);
+
+    // allocate the entries
+    hashtable->entries = malloc(sizeof(entry_t*) * TABLE_SIZE);
+
+    // set each to null
+    int i = 0;
+    for (int i = 0; i < TABLE_SIZE; i++){
+        hashtable->entries[i] = NULL;
+    }
+}
+
+void ht_set(ht_t *hashtable, const char *key; const car *value){
+    unsigned int slot = hash(key);
+
+    entry_t *entry = hashtable->entries[slot];
+
+    if (entry == NULL){
+        hashtable->entries[slot] = ht_pair(key, value);
+        return;
+    }
+
+    entry_t *prev;
+
+    //walkthrough each entry until endreach or matching found
+    while(entry !=NULL){
+
+        //check key
+        if (strcmp(entry->key, key) == 0){
+
+            // caseof match found, replace the value
+            free(entry->value);
+            entry->value = malloc(strlen(value) +1);
+            strcpy(entry->value, value);
+            return;
+        }
+
+        //walkthrough next
+        prev = entry;
+        entry = prev->next;
+    }
+
+    // if no match, add a new entry
+    prev->next = ht_pair(key,value);
+}
+
+entry_t *ht_pair(const char *key, const char *value){
+
+    // allocate the entry
+    entry_t *entry = malloc(sizeof(entry) *1);
+    entry->key = malloc(strlen(key) +1);
+    entry-> value = malloc(strlen(value) +1);
+
+    // copy key and value in place
+    strcopy(entry->key, key);
+    strcopy(entry->value, value);
+
+    return entry;
+}
+
+char *ht_get(ht_t *hashtable, const char *key){
+    unsigned int slot = hash(key);
+
+    // try to find empty slot;
+    entry_t *entry = hashtable->entries[slot];
+
+
+    // no slot means no entry
+    if (entry == NULL){
+        return NULL;
+    }
+
+    // walkthrough each entry in the slot, which could just be single
+    while (entry != NULL){
+
+        // return the value if found
+        if(strcmp(entry->key ,key) == 0){
+            return entry->value;
+        }
+
+        // proceed next available key
+        entry = entry->next;
+    }
+
+    return NULL;
+}
