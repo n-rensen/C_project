@@ -3,23 +3,26 @@ Made for ESIEA C project
 
 compilation :
 
-Depuis le dossier "src" : gcc -Wall -g passfinder.c -o passfinder
+Depuis le dossier "src" : 				gcc -Wall -g passfinder.c -o passfinder
 
 note: le Makefile est présent dans le dossier src.
 
 Utilisation du programme :
 
-passfinder Path-to-wordlist/wordlist.txt sha256digest
+								passfinder Path-to-wordlist/wordlist.txt sha256digest
 
 exemple:
 
-./passfinder password.txt 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+					./passfinder password.txt 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
 
 Output :
 
-loaded 1000000 words into table.
-	... with 355233 collisions
-Found !! Password is --->  test
+										loaded 1000000 words into table.
+											... with 355233 collisions
+										Found !! Password is --->  test
+
+
+/!\ Les dictionnaires de mots de passes utilisés n'ont pas pu etre upload sur Github (trop volumineux). Il est nécessaire d'utiliser un dictionnaire contenant une entrée (mot de passe, word) par ligne.
 
 Etapes réalisées dans le projet :
 
