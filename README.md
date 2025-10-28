@@ -3,11 +3,11 @@ Made for ESIEA C project
 
 compilation :
 
-passfinder: /note: le Makefile est présent dans le dossier src.
+passfinder: le Makefile est présent dans le dossier src.
 
-passprinter: /note: le makefile est présent dans src/passprinter.
+passprinter: le makefile est présent dans src/passprinter.
 
-passfinder2: /note: le makefile est présent dans src/passfinder2.
+passfinder2: le makefile est présent dans src/passfinder2.
 
 
 Lancement du programme :
