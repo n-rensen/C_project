@@ -11,7 +11,9 @@ passfinder2: /note: le makefile est présent dans src/passfinder2.
 Lancement du programme :
 
 passfinder Path-to-wordlist/wordlist.txt sha256digest
+
 passprinter Path-to-wordlist/wordlist.txt destinationfile
+
 passfinder2 Path-to-file
 
 EXEMPLES:
