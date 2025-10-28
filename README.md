@@ -3,23 +3,32 @@ Made for ESIEA C project
 
 compilation :
 
-Depuis le dossier "src" : 				gcc -Wall -g passfinder.c -o passfinder
+passfinder: /note: le Makefile est présent dans le dossier src.
+passprinter: /note: le makefile est présent dans src/passprinter.
+passfinder2: /note: le makefile est présent dans src/passfinder2.
 
-note: le Makefile est présent dans le dossier src.
 
-Utilisation du programme :
+Lancement du programme :
 
-								passfinder Path-to-wordlist/wordlist.txt sha256digest
+passfinder Path-to-wordlist/wordlist.txt sha256digest
+passprinter Path-to-wordlist/wordlist.txt destinationfile
+passfinder2 Path-to-file
 
-exemple:
+EXEMPLES:
+./passfinder password.txt 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
 
-					./passfinder password.txt 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+passprinter password.txt passwordandhashes.txt
 
-Output :
+passfinder2 passwordandhashes.txt
 
-										loaded 1000000 words into table.
-											... with 355233 collisions
-										Found !! Password is --->  test
+Contextes d'utilisations :
+
+le "passfinder" permet de charger en mémoire un dictionnaire et de générer les hashes en effectuant directement une recherche.
+
+le "passprinter" permet de charger en mémoire un dictionnaire, de générer les hashes et d'associer les deux dans un fichier de sortie sous la forme : hash motdepasse (Le délimiteur est l'espace. 
+
+le "passfinder2" permet de charger en mémoire la fichier d'associations générer par le "passprinter". Le fichier de sortie du passprinter sépare les hashes et les mots de passe par un espace. Si un hash est testé sans qu'un mot de passe correspondant soit trouvé, il est possible de revérifier à l'aide de "passfinder" au cas ou le mot de passe contiendrait à l'origine un espace.
+
 
 
 /!\ Les dictionnaires de mots de passes utilisés n'ont pas pu etre upload sur Github (trop volumineux). Il est nécessaire d'utiliser un dictionnaire contenant une entrée (mot de passe, word) par ligne.
